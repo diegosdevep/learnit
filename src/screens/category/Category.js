@@ -1,10 +1,44 @@
+import { useLayoutEffect, useState } from 'react';
 import { FlatList, View, Text, SafeAreaView } from 'react-native';
 import Item from '../../components/Item/Item';
 import Search from '../../components/Search/Search';
 import { categories } from '../../constant/categories';
+import { colors } from '../../constant/colors';
 import { styles } from './category.styles';
+import { useNavigation } from '@react-navigation/native';
 
 const Category = () => {
+  const navigation = useNavigation();
+  const [filteredCategories, setFilteredCategories] = useState(categories);
+
+  const handleSearch = (searchTerm) => {
+    if (searchTerm === '') {
+      setFilteredCategories(categories);
+    } else {
+      const filtered = categories.filter((category) =>
+        category.category.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredCategories(filtered);
+    }
+  };
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: true,
+      title: 'Category',
+      headerTitleStyle: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: 'white',
+      },
+      headerStyle: {
+        backgroundColor: colors.secondary,
+        height: 110,
+        borderBottomColor: 'transparent',
+        shadowColor: 'transparent',
+      },
+    });
+  }, []);
   const renderEmpty = () => (
     <View style={styles.empty}>
       <Text>No hay categorías disponibles</Text>
@@ -19,9 +53,9 @@ const Category = () => {
 
   return (
     <SafeAreaView>
-      <Search />
+      <Search onSearch={handleSearch} />
       <FlatList
-        data={categories}
+        data={filteredCategories}
         renderItem={({ item }) => <Item category={item} />}
         keyExtractor={(item, index) => index.toString()}
         initialNumToRender={1}

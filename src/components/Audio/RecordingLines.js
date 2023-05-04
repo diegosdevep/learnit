@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import * as Sharing from 'expo-sharing';
 import { styles } from './audio.styles';
 import { colors } from '../../constant/colors';
 
 const RecordingLines = ({ recordings }) => {
+  const [isPlaying, setIsPlaying] = useState(false);
   const now = new Date();
   const formattedDate = now.toLocaleDateString('es-ES', {
     day: '2-digit',
@@ -13,7 +14,9 @@ const RecordingLines = ({ recordings }) => {
   });
 
   const playSound = async (sound) => {
+    setIsPlaying(true);
     await sound.replayAsync();
+    setIsPlaying(false);
   };
 
   const shareFile = async (file) => {
@@ -32,7 +35,9 @@ const RecordingLines = ({ recordings }) => {
               style={styles.btn}
               onPress={() => playSound(recordingLine.sound)}
             >
-              <Text style={styles.btnText}>Play</Text>
+              <Text style={styles.btnText}>
+                {isPlaying ? 'Playing' : 'Play'}
+              </Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={[styles.btn, { backgroundColor: colors.deepPurple }]}
