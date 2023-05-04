@@ -12,6 +12,7 @@ const Questions = ({ route }) => {
   const { categoryId } = route.params;
   const navigation = useNavigation();
 
+  const [img, setImg] = useState(null);
   const [recordings, setRecordings] = useState([]);
   const [message, setMessage] = useState('');
 
@@ -55,16 +56,27 @@ const Questions = ({ route }) => {
     setCurrentQuestion(category.questions[0]);
   }, [categoryId]);
 
+  useEffect(() => {
+    if (selectedCategory && selectedCategory.id === categoryId) {
+      setImg(selectedCategory.img);
+    }
+  }, [selectedCategory, categoryId]);
+
   return (
     <SafeAreaView>
       {currentQuestion ? (
         <ScrollView>
-          <Image
-            style={styles.img}
-            source={{
-              uri: 'https://plus.unsplash.com/premium_photo-1677838848138-82699f276319?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTMzfHxhaXJwbGFuZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60',
-            }}
-          />
+          {img ? (
+            <Image style={styles.img} source={{ uri: img }} />
+          ) : (
+            <Image
+              style={styles.img}
+              source={{
+                uri: 'https://media.istockphoto.com/id/591813764/es/foto/palabra-en-ingl%C3%A9s-hecha-con-letras-de-madera-de-bloque-junto-a-un.jpg?s=612x612&w=0&k=20&c=5u_MF_VKCZFbzNH5s2uX4LZUJzuaiysU2arGQaHopig=',
+              }}
+            />
+          )}
+
           <Text style={styles.question}>{currentQuestion}</Text>
 
           {questions && (

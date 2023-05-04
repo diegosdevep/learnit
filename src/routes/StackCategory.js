@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Category from '../screens/category/Category';
 import Questions from '../screens/questions/Questions';
-import { colors } from '../constant/colors';
+import Profile from '../screens/profile/Profile';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +16,7 @@ const StackCategory = () => {
           headerShown: false,
         }}
       />
+      <Stack.Screen name='profile' component={Profile} />
     </Stack.Navigator>
   );
 };

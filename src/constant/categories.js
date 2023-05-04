@@ -2,6 +2,7 @@ export const categories = [
   {
     id: 1,
     category: 'Accidents at Home',
+    img: 'https://images.unsplash.com/photo-1636036212773-7d5fe1e7e673?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bGVhcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
     questions: [
       'What is the most dangerous thing in your home? How can your home be made less dangerous?',
       'What is the most dangerous thing in your home for a child? How can it be made less dangerous?',
