@@ -10,14 +10,18 @@ const Tab = createBottomTabNavigator();
 
 const AppNavigation = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarActiveTintColor: colors.secondary,
+        tabBarInactiveTintColor: 'gray',
+        headerShown: false,
+      }}
+    >
       <Tab.Screen
         name='homeTab'
         component={Home}
         options={{
-          headerShown: false,
           title: 'Home',
-          tabBarLabelStyle: { color: colors.secondary },
           tabBarIcon: ({ focused }) =>
             focused ? iconOptions.home.focused : iconOptions.home.default,
         }}
@@ -26,9 +30,7 @@ const AppNavigation = () => {
         name='categoryTab'
         component={StackCategory}
         options={{
-          headerShown: false,
           title: 'Categories',
-          tabBarLabelStyle: { color: colors.secondary },
           tabBarIcon: ({ focused }) =>
             focused
               ? iconOptions.category.focused
@@ -39,9 +41,7 @@ const AppNavigation = () => {
         name='favoritesTab'
         component={StackFavorites}
         options={{
-          headerShown: false,
           title: 'Favorites',
-          tabBarLabelStyle: { color: colors.secondary },
           tabBarIcon: ({ focused }) =>
             focused ? iconOptions.saved.focused : iconOptions.saved.default,
         }}
@@ -50,9 +50,7 @@ const AppNavigation = () => {
         name='profileTab'
         component={StackProfile}
         options={{
-          headerShown: false,
           title: 'Profile',
-          tabBarLabelStyle: { color: colors.secondary },
           tabBarIcon: ({ focused }) =>
             focused ? iconOptions.profile.focused : iconOptions.profile.default,
         }}
