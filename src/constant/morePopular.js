@@ -16,7 +16,17 @@ export const morePopular = [
   },
   {
     id: 4,
-    title: 'Dreams',
-    img: '',
+    title: 'Dating',
+    img: require('../../assets/moon.png'),
   },
+  {
+    id: 5,
+    title: 'Dating',
+    img: require('../../assets/moon.png'),
+  },
+  // {
+  //   id: 4,
+  //   title: 'Dreams',
+  //   img: '',
+  // },
 ];

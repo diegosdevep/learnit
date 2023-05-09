@@ -3,9 +3,8 @@ import { colors } from '../../constant/colors';
 
 export const styles = StyleSheet.create({
   item: {
-    width: '30%',
     borderRadius: 20,
-    marginHorizontal: 7,
+    marginHorizontal: 8,
     alignItems: 'center',
     justifyContent: 'center',
   },

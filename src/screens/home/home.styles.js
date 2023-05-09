@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     color: colors.secondary,
     marginVertical: 20,
-    marginLeft: 10,
+    marginLeft: 20,
   },
   row: {
     flexDirection: 'row',
@@ -38,5 +38,19 @@ export const styles = StyleSheet.create({
     textShadowColor: 'black',
     textShadowOffset: { width: 4, height: 4 },
     textShadowRadius: 6,
+  },
+  recommendation: {
+    width: width - 35,
+    height: 120,
+    alignSelf: 'center',
+    borderRadius: 10,
+    marginBottom: 10,
+  },
+  text: {
+    marginLeft: 18,
+    fontSize: 17,
+    fontWeight: 600,
+    marginBottom: 5,
+    color: colors.secondary,
   },
 });
